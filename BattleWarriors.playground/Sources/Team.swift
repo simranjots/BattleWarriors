@@ -5,8 +5,7 @@ import UIKit
 class Team {
     
     var  temp : String = ""
-    var this_team : Int = 0, another_team : Int = 0
-    var teama : Int = 0 ,teamb : Int = 0
+    var teama : Int = 0, teamb : Int = 0
     var color : String = "", team_name :String = ""
     var x :Int = 1000 , y : Int = 1000
     var x_axis : Int = 0 , y_axis : Int = 0
@@ -24,7 +23,6 @@ class Team {
         self.winner = true
         
     }
-    
     
     
     func getMember() -> Int{
@@ -129,8 +127,9 @@ class Team {
                 break
             }
         }
-        this_team = Int.random(in: 0 ... teama)
-        another_team = Int.random(in: 0 ... teamb)
+        let this_team = self.player.randomElement()
+        let another_team = otherTeam.player.randomElement()
+        print("\(this_team?.getName()) figthing with \(another_team?.getName())")
         
         
         
