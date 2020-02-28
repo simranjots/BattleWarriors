@@ -7,6 +7,8 @@
      var score :Int
      var kills :Int
      var Weapon = [WeaponClass]()
+     var weaponname :String = ""
+
     
        init(health :Int, name :String, rank :Int, selected_weapon :Int)
           {
@@ -24,6 +26,16 @@
 
          }
 
+             func getWeaponName() -> String
+                  {
+                   
+                      return weaponname
+                  }
+
+              func setWeaponName(sWeaponName :String)
+                 {
+                        self.weaponname = sWeaponName
+                 }
            func getScore() -> Int
                {
                 
