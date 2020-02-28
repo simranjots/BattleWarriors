@@ -15,6 +15,7 @@
                self.score = 0
                self.kills = 0
                self.selected_weapon = selected_weapon
+           
             Weapon.append(Assault(bullet :20))
             Weapon.append(Shotgun(bullet :30))
             Weapon.append(Smg(bullet :10))

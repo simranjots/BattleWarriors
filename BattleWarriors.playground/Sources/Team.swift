@@ -4,7 +4,6 @@ import UIKit
 
 class Team {
     
-    var  temp : String = ""
     var teama : Int = 0, teamb : Int = 0
     var color : String = "", team_name :String = ""
     var x :Int = 1000 , y : Int = 1000
@@ -21,6 +20,7 @@ class Team {
         self.radius = 10 * mem
         self.lose = false
         self.winner = true
+        
         
     }
     
@@ -134,20 +134,76 @@ class Team {
         if this_team!.getScore() > 25 || another_team!.getScore() > 25 {
             if this_team!.getScore() > 25{
                 this_team!.Weapon.first!.upgradeWeapon(this_team: this_team!)
-               let temp = this_team!.Weapon[this_team!.getSelected_weapon()] as? Assault
-                print("\(this_team!.getName()) has upgraded the weapon to \(temp!.getWeaponName())")
+               
+                let tempobj = this_team!.Weapon[this_team!.getSelected_weapon()]
+                let someCharacter: Int = this_team!.getSelected_weapon()
+                
+                switch someCharacter {
+                case 1 :
+                         let Assualtobj = tempobj as? Assault
+                         
+                    print("\(this_team!.getName()) has upgraded the weapon to \(Assualtobj!.getWeaponName())")
+                    break
+                case 2 :
+                    let Smgobj = tempobj as? Smg
+                  print("\(this_team!.getName()) has upgraded the weapon to \(Smgobj!.getWeaponName())")
+                    break
+                case 3 :
+                   let Shotgunobj = tempobj as? Shotgun
+                    print("\(this_team!.getName()) has upgraded the weapon to \(Shotgunobj!.getWeaponName())")
+                    break
+                case 4 :
+                    let Lmgobj = tempobj as? Lmg
+                    print("\(this_team!.getName()) has upgraded the weapon to \(Lmgobj!.getWeaponName())")
+                    break
+                case 5 :
+                    let Sniperobj = tempobj as? Sniper
+                    print("\(this_team!.getName()) has upgraded the weapon to \(Sniperobj!.getWeaponName())")
+                    break
+                default :
+                    print("No more weapon")
+                }
+              
+                
+                
+            }else {
+                another_team!.Weapon.first!.upgradeWeapon(this_team: another_team!)
+                
+                let tempobj2 = another_team!.Weapon[another_team!.getSelected_weapon()]
+                let someCharacter2: Int = another_team!.getSelected_weapon()
+                
+                
+                switch someCharacter2 {
+                case 1 :
+                    let Assualtobj2 = tempobj2 as? Assault
+                    
+                    print("\(another_team!.getName()) has upgraded the weapon to \(Assualtobj2!.getWeaponName())")
+                    break
+                case 2 :
+                    let Smgobj2 = tempobj2 as? Smg
+                    print("\(another_team!.getName()) has upgraded the weapon to \(Smgobj2!.getWeaponName())")
+                    break
+                case 3 :
+                    let Shotgunobj2 = tempobj2 as? Shotgun
+                    print("\(another_team!.getName()) has upgraded the weapon to \(Shotgunobj2!.getWeaponName())")
+                    break
+                case 4 :
+                    let Lmgobj2 = tempobj2 as? Lmg
+                    print("\(another_team!.getName()) has upgraded the weapon to \(Lmgobj2!.getWeaponName())")
+                    break
+                case 5 :
+                    let Sniperobj2 = tempobj2 as? Sniper
+                    print("\(another_team!.getName()) has upgraded the weapon to \(Sniperobj2!.getWeaponName())")
+                    break
+                default :
+                    print("No more weapon")
+
+                
+                
             }
+          }
         }
         
         return otherTeam
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-}

@@ -65,7 +65,7 @@ class  Assault : WeaponClass, WeaponProtocol{
     
     init(bullet : Int) {
         self.bullet = bullet
-        // super.init(fire_rate : 3, damage: 15, bullets: self.bullet)
+        //super.init(fire_rate: 3, damage: 15, bullets: self.bullet)
     }
     
     func getWeaponName() -> String {
