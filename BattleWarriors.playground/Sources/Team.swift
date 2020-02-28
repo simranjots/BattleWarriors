@@ -129,9 +129,15 @@ class Team {
         }
         let this_team = self.player.randomElement()
         let another_team = otherTeam.player.randomElement()
-        print("\(this_team?.getName()) figthing with \(another_team?.getName())")
+        print("\(this_team!.getName()) figthing with \(another_team!.getName())")
         
-        
+        if this_team!.getScore() > 25 || another_team!.getScore() > 25 {
+            if this_team!.getScore() > 25{
+                this_team!.Weapon.first!.upgradeWeapon(this_team: this_team!)
+               let temp = this_team!.Weapon[this_team!.getSelected_weapon()] as? Assault
+                print("\(this_team!.getName()) has upgraded the weapon to \(temp!.getWeaponName())")
+            }
+        }
         
         return otherTeam
     }

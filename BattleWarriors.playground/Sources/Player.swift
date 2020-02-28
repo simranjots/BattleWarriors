@@ -7,7 +7,7 @@
      var score :Int
      var kills :Int
      var Weapon = [WeaponClass]()
-
+    
        init(health :Int, name :String, rank :Int, selected_weapon :Int)
           {
                self.health = health
@@ -25,6 +25,7 @@
 
            func getScore() -> Int
                {
+                
                    return score
                }
 
@@ -57,7 +58,17 @@
               {
                      self.name = name
               }
-       
+    
+    func getSelected_weapon() -> Int {
+        if selected_weapon > 4 {
+            
+        }
+        return selected_weapon
+    }
+    
+    func setSelected(Nselected_weapon : Int) -> Void {
+        self.selected_weapon = Nselected_weapon
+    }
     
 
 }

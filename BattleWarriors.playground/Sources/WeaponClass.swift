@@ -10,19 +10,12 @@ protocol WeaponProtocol
     func fire_rate() -> Int
 }
 
-class WeaponClass
+class WeaponClass 
 {
     var fire_rate : Int = 0
     var damage : Int = 0
     var bullets : Int = 0
     var MAX_NUM_BULLETS : Int = 30
-    
-    
-    init(fire_rate : Int, damage : Int, bullets : Int){
-        self.bullets = bullets
-        self.damage = damage
-        self.bullets = bullets
-    }
     
     
     func getBullets() -> Int {
@@ -55,47 +48,13 @@ class WeaponClass
         return self.getBullets()
     }
     
-    //  func upgradeWeapon(Team team,int this_team) -> Void {
-    //updating the weapon
-    // team.getPlayer().get(0).get(this_team).setSelected_weapon(team.getPlayer().get(0).get(this_team).getSelected_weapon() + 1);
-    //team.getPlayer().get(0).get(this_team).setScore(team.getPlayer().get(0).get(this_team).getScore() - 25);
-    // }
+    func upgradeWeapon(this_team : Player) -> Void {
+       //updating the weapon
     
-}
-
-
-
-class  Lmg : WeaponClass, WeaponProtocol{
-    var bullet : Int
-    var weaponName : String = "LMG"
-    
-    init(bullet : Int) {
-        self.bullet = bullet
-        super.init(fire_rate: 2, damage: 35, bullets: self.bullet)
-    }
-    
-    func getWeaponName() -> String {
-        return weaponName
-    }
-    
-    func fire() -> Int {
-        self.setBullets(bullets : self.getBullets()-1);
-        if(self.getBullets()<=0)
-        {
-            self.reload();
-        }
-        return self.getBullets();
-    }
-    
-    func damage() -> Int {
-        self.setDamage(damage: Int.random(in: 0...self.damage))
-        return  self.getDamage();
-    }
-    
-    func fire_rate() -> Int {
-        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
-        return  self.getFire_rate();
-    }
+        this_team.setSelected(Nselected_weapon: this_team.getSelected_weapon() + 1)
+        this_team.setScore(score: this_team.getScore() - 25)
+        
+     }
     
 }
 
@@ -106,7 +65,7 @@ class  Assault : WeaponClass, WeaponProtocol{
     
     init(bullet : Int) {
         self.bullet = bullet
-        super.init(fire_rate: 3, damage: 15, bullets: self.bullet)
+        // super.init(fire_rate : 3, damage: 15, bullets: self.bullet)
     }
     
     func getWeaponName() -> String {
@@ -135,6 +94,42 @@ class  Assault : WeaponClass, WeaponProtocol{
     
 }
 
+class  Lmg : WeaponClass, WeaponProtocol{
+    var bullet : Int
+    var weaponName : String = "LMG"
+    
+    init(bullet : Int) {
+        self.bullet = bullet
+      //  super.init(fire_rate: 2, damage: 35, bullets: self.bullet)
+    }
+    
+    func getWeaponName() -> String {
+        return weaponName
+    }
+    
+    func fire() -> Int {
+        self.setBullets(bullets : self.getBullets()-1);
+        if(self.getBullets()<=0)
+        {
+            self.reload();
+        }
+        return self.getBullets();
+    }
+    
+    func damage() -> Int {
+        self.setDamage(damage: Int.random(in: 0...self.damage))
+        return  self.getDamage();
+    }
+    
+    func fire_rate() -> Int {
+        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
+        return  self.getFire_rate();
+    }
+    
+}
+
+
+
 class  Shotgun : WeaponClass, WeaponProtocol{
     var bullet : Int
     var weaponName : String = "Shotgun"
@@ -142,7 +137,7 @@ class  Shotgun : WeaponClass, WeaponProtocol{
     
     init(bullet : Int) {
         self.bullet = bullet
-        super.init(fire_rate: 3, damage: 25, bullets: self.bullet)
+        //super.init(fire_rate: 3, damage: 25, bullets: self.bullet)
     }
     
     func getWeaponName() -> String {
@@ -177,7 +172,7 @@ class  Smg : WeaponClass, WeaponProtocol{
     
     init(bullet : Int) {
         self.bullet = bullet
-        super.init(fire_rate: 3, damage: 30, bullets: self.bullet)
+      //  super.init(fire_rate: 3, damage: 30, bullets: self.bullet)
     }
     
     func getWeaponName() -> String {
@@ -211,7 +206,7 @@ class  Sniper : WeaponClass, WeaponProtocol{
     
     init(bullet : Int) {
         self.bullet = bullet
-        super.init(fire_rate: 2, damage: 50, bullets: self.bullet)
+      //  super.init(fire_rate: 2, damage: 50, bullets: self.bullet)
     }
     
     func getWeaponName() -> String {
