@@ -43,9 +43,9 @@ class WeaponClass
     }
     
     
-    func reload() -> Int {
+    func reload() -> Void {
         self.setBullets(bullets: self.MAX_NUM_BULLETS)
-        return self.getBullets()
+  
     }
     
     func upgradeWeapon(this_team : Player) -> Void {
@@ -94,146 +94,20 @@ class  Assault : WeaponClass, WeaponProtocol{
     
 }
 
-class  Lmg : WeaponClass, WeaponProtocol{
-    var bullet : Int
-    var weaponName : String = "LMG"
+
+class WeaponCalling {
     
-    init(bullet : Int) {
-        self.bullet = bullet
-      //  super.init(fire_rate: 2, damage: 35, bullets: self.bullet)
+    var delegate : WeaponProtocol?
+    
+    init(Del : WeaponProtocol) {
+        self.delegate = Del
     }
     
-    func getWeaponName() -> String {
-        return weaponName
+    func setWeapon(NewWeapon : WeaponProtocol) -> Void {
+        self.delegate = NewWeapon
     }
     
-    func fire() -> Int {
-        self.setBullets(bullets : self.getBullets()-1);
-        if(self.getBullets()<=0)
-        {
-            self.reload();
-        }
-        return self.getBullets();
-    }
-    
-    func damage() -> Int {
-        self.setDamage(damage: Int.random(in: 0...self.damage))
-        return  self.getDamage();
-    }
-    
-    func fire_rate() -> Int {
-        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
-        return  self.getFire_rate();
-    }
     
 }
-
-
-
-class  Shotgun : WeaponClass, WeaponProtocol{
-    var bullet : Int
-    var weaponName : String = "Shotgun"
-    var dam : Int = 0
-    
-    init(bullet : Int) {
-        self.bullet = bullet
-        //super.init(fire_rate: 3, damage: 25, bullets: self.bullet)
-    }
-    
-    func getWeaponName() -> String {
-        return weaponName
-    }
-    
-    func fire() -> Int {
-        self.setBullets(bullets : self.getBullets()-1);
-        dam = damage() * fire_rate();
-        if(self.getBullets()<=0)
-        {
-            self.reload();
-        }
-        return dam;
-    }
-    
-    func damage() -> Int {
-        self.setDamage(damage: Int.random(in: 0...self.damage))
-        return  self.getDamage();
-    }
-    
-    func fire_rate() -> Int {
-        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
-        return  self.getFire_rate();
-    }
-    
-}
-
-class  Smg : WeaponClass, WeaponProtocol{
-    var bullet : Int
-    var weaponName : String = "SMG"
-    
-    init(bullet : Int) {
-        self.bullet = bullet
-      //  super.init(fire_rate: 3, damage: 30, bullets: self.bullet)
-    }
-    
-    func getWeaponName() -> String {
-        return weaponName
-    }
-    
-    func fire() -> Int {
-        self.setBullets(bullets : self.getBullets()-1);
-        if(self.getBullets()<=0)
-        {
-            self.reload();
-        }
-        return self.getBullets();
-    }
-    
-    func damage() -> Int {
-        self.setDamage(damage: Int.random(in: 0...self.damage))
-        return  self.getDamage();
-    }
-    
-    func fire_rate() -> Int {
-        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
-        return  self.getFire_rate();
-    }
-    
-}
-
-class  Sniper : WeaponClass, WeaponProtocol{
-    var bullet : Int
-    var weaponName : String = "Sniper"
-    
-    init(bullet : Int) {
-        self.bullet = bullet
-      //  super.init(fire_rate: 2, damage: 50, bullets: self.bullet)
-    }
-    
-    func getWeaponName() -> String {
-        return weaponName
-    }
-    
-    func fire() -> Int {
-        self.setBullets(bullets : self.getBullets()-1);
-        if(self.getBullets()<=0)
-        {
-            self.reload();
-        }
-        return self.getBullets();
-    }
-    
-    func damage() -> Int {
-        self.setDamage(damage: Int.random(in: 0...self.damage))
-        return  self.getDamage();
-    }
-    
-    func fire_rate() -> Int {
-        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
-        return  self.getFire_rate();
-    }
-    
-}
-
-
 
 

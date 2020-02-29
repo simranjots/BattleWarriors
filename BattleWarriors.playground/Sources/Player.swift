@@ -6,9 +6,11 @@
      var selected_weapon :Int
      var score :Int
      var kills :Int
-     var Weapon = [WeaponClass]()
      var weaponname :String = ""
-
+     var jAss: Assault =  Assault(bullet: 20)
+     var ass : WeaponCalling
+              
+     var weapon = [WeaponClass]()
     
        init(health :Int, name :String, rank :Int, selected_weapon :Int)
           {
@@ -17,15 +19,11 @@
                self.score = 0
                self.kills = 0
                self.selected_weapon = selected_weapon
-           
-            Weapon.append(Assault(bullet :20))
-            Weapon.append(Shotgun(bullet :30))
-            Weapon.append(Smg(bullet :10))
-            Weapon.append(Lmg(bullet :10))
-            Weapon.append(Sniper(bullet :20))
-
+               self.ass = WeaponCalling(Del: jAss)
          }
-
+    
+          
+   
              func getWeaponName() -> String
                   {
                    

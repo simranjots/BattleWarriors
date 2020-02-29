@@ -133,90 +133,31 @@ class Team {
         
         if this_team!.getScore() > 25 || another_team!.getScore() > 25 {
             if this_team!.getScore() > 25{
-                this_team!.Weapon.first!.upgradeWeapon(this_team: this_team!)
+                this_team!.weapon.first!.upgradeWeapon(this_team: this_team!)
                
-                let tempobj = this_team!.Weapon[this_team!.getSelected_weapon()]
-                let someCharacter: Int = this_team!.getSelected_weapon()
-                
-                switch someCharacter {
-                case 1 :
-                         let Assualtobj = tempobj as? Assault
-                  this_team!.setWeaponName(sWeaponName: "Assault")
-                    print("\(this_team!.getName()) has upgraded the weapon to \(Assualtobj!.getWeaponName())")
-                    break
-                case 2 :
-                    let Smgobj = tempobj as? Smg
-                    this_team!.setWeaponName(sWeaponName: "Smg")
-                    print("\(this_team!.getName()) has upgraded the weapon to \(Smgobj!.getWeaponName())")
-                    break
-                case 3 :
-                   let Shotgunobj = tempobj as? Shotgun
-                   this_team!.setWeaponName(sWeaponName: "Shotgun")
-                    print("\(this_team!.getName()) has upgraded the weapon to \(Shotgunobj!.getWeaponName())")
-                    break
-                case 4 :
-                    let Lmgobj = tempobj as? Lmg
-                    this_team!.setWeaponName(sWeaponName: "Lmg")
-                    print("\(this_team!.getName()) has upgraded the weapon to \(Lmgobj!.getWeaponName())")
-                    break
-                case 5 :
-                    let Sniperobj = tempobj as? Sniper
-                    this_team!.setWeaponName(sWeaponName: "Sniper")
-                    print("\(this_team!.getName()) has upgraded the weapon to \(Sniperobj!.getWeaponName())")
-                    break
-                default :
-                    print("No more weapon")
-                }
-              
-                
-                
+                this_team!.setWeaponName(sWeaponName: "Assault")
+                  print("\(this_team!.getName()) has upgraded the weapon to \(this_team!.ass.delegate!.getWeaponName())")
+                  
             }else {
-                another_team!.Weapon.first!.upgradeWeapon(this_team: another_team!)
+                       
+                another_team!.weapon.first!.upgradeWeapon(this_team: another_team!)
+            
+                another_team!.setWeaponName(sWeaponName: "Assault")
+               print("\(another_team!.getName()) has upgraded the weapon to \(another_team!.ass.delegate!.getWeaponName())")
                 
-                let tempobj2 = another_team!.Weapon[another_team!.getSelected_weapon()]
-                let someCharacter2: Int = another_team!.getSelected_weapon()
-                
-                
-                switch someCharacter2 {
-                case 1 :
-                    let Assualtobj2 = tempobj2 as? Assault
-                    another_team!.setWeaponName(sWeaponName: "Assault")
-                    print("\(another_team!.getName()) has upgraded the weapon to \(Assualtobj2!.getWeaponName())")
-                    break
-                case 2 :
-                    let Smgobj2 = tempobj2 as? Smg
-                    another_team!.setWeaponName(sWeaponName: "Smg")
-                    print("\(another_team!.getName()) has upgraded the weapon to \(Smgobj2!.getWeaponName())")
-                    break
-                case 3 :
-                    let Shotgunobj2 = tempobj2 as? Shotgun
-                    another_team!.setWeaponName(sWeaponName: "Shotgun")
-                    print("\(another_team!.getName()) has upgraded the weapon to \(Shotgunobj2!.getWeaponName())")
-                    break
-                case 4 :
-                    let Lmgobj2 = tempobj2 as? Lmg
-                    another_team!.setWeaponName(sWeaponName: "Lmg")
-                    print("\(another_team!.getName()) has upgraded the weapon to \(Lmgobj2!.getWeaponName())")
-                    break
-                case 5 :
-                    let Sniperobj2 = tempobj2 as? Sniper
-                    another_team!.setWeaponName(sWeaponName: "sniper")
-                    print("\(another_team!.getName()) has upgraded the weapon to \(Sniperobj2!.getWeaponName())")
-                    break
-                default :
-                    print("No more weapon")
-
-                
-                
-            }
-          }
         }
+        }
+        
+        print("\(this_team!.getName()) has weapon \(this_team!.ass.delegate!.getWeaponName()) and \(another_team!.getName()) has weapon \(another_team!.ass.delegate!.getWeaponName())")
         
         while another_team!.getHealth() > 1 {
             
             if another_team!.getHealth() > 1 {
                 
-                another_team!.setHealth(health: another_team!.getHealth()  )
+                another_team!.setHealth(health: another_team!.getHealth() - this_team!.ass.delegate!.fire())
+                
+                print("\(this_team!.getName()) Attacking \(another_team!.getName())")
+                
             }
         }
         return otherTeam
