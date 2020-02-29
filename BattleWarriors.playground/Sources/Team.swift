@@ -2,7 +2,7 @@ import Foundation
 
 import UIKit
 
-class Team {
+public class Team {
     
     var teama : Int = 0, teamb : Int = 0
     var color : String = "", team_name :String = ""
@@ -12,7 +12,7 @@ class Team {
     var lose , winner : Bool
     var player = [Player]()
     
-    init(color :  String, team_name : String, mem : Int, play : Player){
+   init(color :  String, team_name : String, mem : Int, play : Player){
         self.color = color
         self.team_name = team_name
         self.member = mem
@@ -25,79 +25,79 @@ class Team {
     }
     
     
-    func getMember() -> Int{
+    public func getMember() -> Int{
         
         return member
     }
     
-    func setMember(sMember : Int) ->Void{
+    public func setMember(sMember : Int) ->Void{
         
         self.member = sMember
     }
     
-    func getColor() -> String {
+   public func getColor() -> String {
         return color
     }
     
-    func setColor(scolor : String) -> Void {
+   public func setColor(scolor : String) -> Void {
         self.color = scolor
     }
     
-    func getTeam_Name() -> String {
+   public func getTeam_Name() -> String {
         return team_name
     }
     
-    func setTeam_Name(sTeam_name : String) -> Void {
+   public func setTeam_Name(sTeam_name : String) -> Void {
         self.team_name = sTeam_name
     }
     
-    func isLose() -> Bool {
+   public func isLose() -> Bool {
         return lose
     }
     
-    func setLose(sLose : Bool) -> Void {
+   public func setLose(sLose : Bool) -> Void {
         self.lose = sLose
     }
     
-    func isWinner() -> Bool {
+   public func isWinner() -> Bool {
         return winner
     }
     
-    func setWinner(sWinner : Bool) -> Void {
+   public func setWinner(sWinner : Bool) -> Void {
         self.winner = sWinner
     }
     
-    func getRadius() -> Int {
+   public func getRadius() -> Int {
         return radius
     }
     
-    func setRadius(sRadius  : Int) -> Void {
+   public func setRadius(sRadius  : Int) -> Void {
         self.radius = sRadius
     }
     
-    func getX_axis() -> Int {
+   public func getX_axis() -> Int {
         return x_axis
     }
-    func setX_axis(sX_axis : Int) ->  Void{
+  public func setX_axis(sX_axis : Int) ->  Void{
         self.x_axis = sX_axis
     }
     
-    func getY_axis() -> Int {
+   public func getY_axis() -> Int {
         return y_axis
     }
-    func setY_axis(sY_axis : Int) ->  Void{
+   public func setY_axis(sY_axis : Int) ->  Void{
         self.y_axis = sY_axis
     }
-    func location_x_axis() -> Int {
+   public func location_x_axis() -> Int {
         let n = Int.random(in: 1 ... x)
         return n
     }
-    func location_y_axis() -> Int {
+   public func location_y_axis() -> Int {
         let n = Int.random(in: 1 ... y)
         return n
     }
     
-    func moveTeam() -> Void {
+   public func moveTeam() -> Void {
         if self.getX_axis() > 20  {
             self.setX_axis(sX_axis: self.getX_axis() - Int.random(in: 1 ... 50))
         } else {
@@ -111,7 +111,7 @@ class Team {
         }
     }
     
-    func battleTeam(otherTeam : Team) -> Team {
+   public func battleTeam(otherTeam : Team) -> Team {
         
         print("\(self.getTeam_Name()) started attackig \(otherTeam.getTeam_Name())")
         print("\(self.getTeam_Name()) has \(self.getMember()) members and\(otherTeam.getTeam_Name()) has \(otherTeam.getMember()) members")

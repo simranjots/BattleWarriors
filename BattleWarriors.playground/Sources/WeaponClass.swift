@@ -10,7 +10,7 @@ protocol WeaponProtocol
     func fire_rate() -> Int
 }
 
-class WeaponClass 
+public class WeaponClass
 {
     var fire_rate : Int = 0
     var damage : Int = 0
@@ -58,7 +58,7 @@ class WeaponClass
     
 }
 
-class  Assault : WeaponClass, WeaponProtocol{
+public class  Assault : WeaponClass, WeaponProtocol{
     var bullet : Int
     var weaponName : String = "Assault"
     var dam : Int = 0
@@ -95,7 +95,7 @@ class  Assault : WeaponClass, WeaponProtocol{
 }
 
 
-class WeaponCalling {
+public class WeaponCalling {
     
     var delegate : WeaponProtocol?
     

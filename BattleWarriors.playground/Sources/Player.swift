@@ -1,5 +1,5 @@
  
- class Player{
+ public class Player{
 
      var health :Int
      var name :String
@@ -24,60 +24,60 @@
     
           
    
-             func getWeaponName() -> String
+            public func getWeaponName() -> String
                   {
                    
                       return weaponname
                   }
 
-              func setWeaponName(sWeaponName :String)
+             public func setWeaponName(sWeaponName :String)
                  {
                         self.weaponname = sWeaponName
                  }
-           func getScore() -> Int
+         public func getScore() -> Int
                {
                 
                    return score
                }
 
-           func setScore(score :Int)
+          public func setScore(score :Int)
               {
                      self.score = score
               }
 
-             func getKills() -> Int
+            public func getKills() -> Int
                {
                    return kills
                }
-             func setKills(kills :Int)
+            public func setKills(kills :Int)
               {
                      self.kills = kills
               }
-              func getHealth() -> Int
+            public func getHealth() -> Int
                {
                    return health
                }
-             func setHealth(health :Int)
+            public func setHealth(health :Int)
               {
                      self.health = health
               }
-             func getName() -> String
+           public func getName() -> String
                {
                    return name
                }
-             func setName(name :String)
+            public func setName(name :String)
               {
                      self.name = name
               }
     
-    func getSelected_weapon() -> Int {
+   public func getSelected_weapon() -> Int {
         if selected_weapon > 4 {
             
         }
         return selected_weapon
     }
     
-    func setSelected(Nselected_weapon : Int) -> Void {
+   public func setSelected(Nselected_weapon : Int) -> Void {
         self.selected_weapon = Nselected_weapon
     }
     
