@@ -12,8 +12,8 @@ protocol WeaponProtocol
 
 public class WeaponClass
 {
-    var fire_rate : Int = 0
-    var damage : Int = 0
+    var fire_rate : Int = 2
+    var damage : Int = 10
     var bullets : Int = 0
     var MAX_NUM_BULLETS : Int = 30
     
@@ -73,23 +73,25 @@ public class  Assault : WeaponClass, WeaponProtocol{
     }
     
     func fire() -> Int {
+        
         self.setBullets(bullets : self.getBullets()-1);
         dam = damage() * fire_rate();
         if(self.getBullets()<=0)
         {
             self.reload();
         }
+        print("damvalue \(dam)")
         return dam;
     }
     
     func damage() -> Int {
-        self.setDamage(damage: Int.random(in: 0...self.damage))
-        return  self.getDamage();
+        self.setDamage(damage: Int.random(in: 1...10))
+        return  self.damage
     }
     
     func fire_rate() -> Int {
-        self.setFire_rate(fire_rate: Int.random(in: 0...self.fire_rate));
-        return  self.getFire_rate();
+        self.setFire_rate(fire_rate: Int.random(in: 1...3));
+        return  self.fire_rate
     }
     
 }

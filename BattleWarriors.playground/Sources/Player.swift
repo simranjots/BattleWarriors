@@ -7,12 +7,12 @@
      var score :Int
      var kills :Int
      var weaponname :String = ""
-     var jAss: Assault =  Assault(bullet: 20)
      var ass : WeaponCalling
+     var jAss: Assault =  Assault(bullet: 20)
               
      var weapon = [WeaponClass]()
     
-       init(health :Int, name :String, rank :Int, selected_weapon :Int)
+      public init(health :Int, name :String, rank :Int, selected_weapon :Int)
           {
                self.health = health
                self.name = name
@@ -34,7 +34,7 @@
                  {
                         self.weaponname = sWeaponName
                  }
-         public func getScore() -> Int
+           public func getScore() -> Int
                {
                 
                    return score

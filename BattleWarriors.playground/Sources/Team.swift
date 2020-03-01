@@ -12,15 +12,14 @@ public class Team {
     var lose , winner : Bool
     var player = [Player]()
     
-   init(color :  String, team_name : String, mem : Int, play : Player){
+  public init(color :  String, team_name : String, mem : Int, play : Array<Player>){
         self.color = color
         self.team_name = team_name
         self.member = mem
-        player.append(play)
+        self.player = play
         self.radius = 10 * mem
         self.lose = false
         self.winner = true
-        
         
     }
     
@@ -114,71 +113,56 @@ public class Team {
    public func battleTeam(otherTeam : Team) -> Team {
         
         print("\(self.getTeam_Name()) started attackig \(otherTeam.getTeam_Name())")
-        print("\(self.getTeam_Name()) has \(self.getMember()) members and\(otherTeam.getTeam_Name()) has \(otherTeam.getMember()) members")
-        while self.getMember() > -1 && otherTeam.getMember() > -1 {
-            if self.getMember() > 0 {
-                teama = self.getMember() - 1;
-            }else{
-                break
-            }
-            if otherTeam.getMember() > 0 {
-                teama = otherTeam.getMember() - 1;
-            }else{
-                break
-            }
+        print("\(self.getTeam_Name()) has \(self.getMember()) members and \(otherTeam.getTeam_Name()) has \(otherTeam.getMember()) members")
+       
+    while self.player.count > 0 && otherTeam.player.count > 0 {
+            print("Inside")
+  print("Start 1")
+        print(self.player.count)
+        print(otherTeam.player.count)
+        let randomindex = Int.random(in : 0..<self.player.count)
+        let otherrandomIndex = Int.random(in : 0..<otherTeam.player.count)
+        print(randomindex)
+        print(otherrandomIndex)
+        print(self.player.count)
+        print(otherTeam.player.count)
+        let this_team = self.player[randomindex]
+        let another_team = otherTeam.player[otherrandomIndex]
         
-        let this_team = self.player.randomElement()
-        let another_team = otherTeam.player.randomElement()
-        print("\(this_team!.getName()) figthing with \(another_team!.getName())")
+        print("\(this_team.getName()) figthing with \(another_team.getName())")
         
-        if this_team!.getScore() > 25 || another_team!.getScore() > 25 {
-            if this_team!.getScore() > 25{
-                this_team!.weapon.first!.upgradeWeapon(this_team: this_team!)
-               
-                this_team!.setWeaponName(sWeaponName: "Assault")
-                  print("\(this_team!.getName()) has upgraded the weapon to \(this_team!.ass.delegate!.getWeaponName())")
-                  
-            }else {
-                       
-                another_team!.weapon.first!.upgradeWeapon(this_team: another_team!)
-            
-                another_team!.setWeaponName(sWeaponName: "Assault")
-               print("\(another_team!.getName()) has upgraded the weapon to \(another_team!.ass.delegate!.getWeaponName())")
-                
-        }
-        }
-        
-        print("\(this_team!.getName()) has weapon \(this_team!.ass.delegate!.getWeaponName()) and \(another_team!.getName()) has weapon \(another_team!.ass.delegate!.getWeaponName())")
+        print("\(this_team.getName()) has weapon \(this_team.ass.delegate!.getWeaponName()) and \(another_team.getName()) has weapon \(another_team.ass.delegate!.getWeaponName())")
         // Second While
-        while another_team!.getHealth() > 1 {
+        while another_team.getHealth() > 1 {
             
-            if this_team!.getHealth() > 1 {
+            if this_team.getHealth() > 1 {
+            
+                print("assault fire \(this_team.ass.delegate!.fire())")
+                another_team.setHealth(health: another_team.getHealth() - this_team.ass.delegate!.fire())
                 
-                another_team!.setHealth(health: another_team!.getHealth() - this_team!.ass.delegate!.fire())
-                
-                print("\(this_team!.getName()) Attacking \(another_team!.getName())")
+                print("\(this_team.getName()) Attacking \(another_team.getName())")
                 
             }
             
-            print("\(another_team!.getName()) Hp is \(another_team!.getHealth())")
+            print("\(another_team.getName()) Hp is \(another_team.getHealth())")
             
-            if another_team!.getHealth() > 1 {
-                this_team!.setHealth(health: this_team!.getHealth() - another_team!.ass.delegate!.fire())
-                print("\(another_team!.getName()) Attacking \(this_team!.getName())")
+            if another_team.getHealth() > 1 {
+                this_team.setHealth(health: this_team.getHealth() - another_team.ass.delegate!.fire())
+                print("\(another_team.getName()) Attacking \(this_team.getName())")
             }
             
-             print("\(this_team!.getName()) Hp is \(this_team!.getHealth())")
+             print("\(this_team.getName()) Hp is \(this_team.getHealth())")
             
-            if this_team!.getHealth() < 0 {
+            if this_team.getHealth() < 0 {
                 break;
             }
         }// second While
         
         //If this player died
-        if this_team!.getHealth() < 0 {
-            print("\(this_team!.getName()) Dies !!!")
+        if this_team.getHealth() < 0 {
+            print("\(this_team.getName()) Dies !!!")
             // Health )
-            this_team!.setHealth(health: 0)
+            this_team.setHealth(health: 0)
             
             //updating the radius
             
@@ -189,30 +173,42 @@ public class Team {
             }
             //reducing members
             self.setMember(sMember: self.getMember() - 1)
-            // setting the Kills
-            another_team!.setKills(kills: another_team!.getKills() + 1)
-            
-            print("\(another_team!.getName()) Killed  \(another_team!.getKills()) opponent Player")
-            //setting Score
-            if another_team!.getKills() > 0 {
-                another_team!.setScore(score: 100 * another_team!.getKills())
+            for p1 in 0...self.player.count
+            {
+                let dyingP1 = self.player[p1]
+                if(dyingP1.name == this_team.name)
+                {
+                    self.player.remove(at: p1)
+                    break
+                }
                 
-            print("\(another_team!.getName()) Score is \(another_team!.getScore())")
+            }
+            
+            // setting the Kills
+            another_team.setKills(kills: another_team.getKills() + 1)
+            
+            print("\(another_team.getName()) Killed  \(another_team.getKills()) opponent Player")
+            //setting Score
+            if another_team.getKills() > 0 {
+                another_team.setScore(score: 100 * another_team.getKills())
+                
+            print("\(another_team.getName()) Score is \(another_team.getScore())")
                 
             }
             
             // Showing remaining members
-            print("\(self.getTeam_Name()) remaining members are \(self.getMember())")
+            print("\(self.getTeam_Name()) remaining members are \(self.player.count)")
+            
             
         }
         
         // If other Player Died
         
-        else{
-            
-            print("\(another_team!.getName()) Dies !!!")
+        else
+        {
+            print("\(another_team.getName()) Dies !!!")
             // Health )
-            another_team!.setHealth(health: 0)
+            another_team.setHealth(health: 0)
             
             //updating the radius
             
@@ -223,36 +219,52 @@ public class Team {
             }
             //reducing members
             otherTeam.setMember(sMember: otherTeam.getMember() - 1)
-            // setting the Kills
-            this_team!.setKills(kills: this_team!.getKills() + 1)
-            
-            print("\(this_team!.getName()) Killed  \(this_team!.getKills()) opponent Player")
-            //setting Score
-            if this_team!.getKills() > 0 {
-                this_team!.setScore(score: 100 * this_team!.getKills())
+            for p2 in 0...otherTeam.player.count
+            {
+                let dyingP2 = otherTeam.player[p2]
+                if(dyingP2.name == another_team.name)
+                {
+                    otherTeam.player.remove(at: p2)
+                    break
+                }
                 
-            print("\(this_team!.getName()) Score is \(this_team!.getScore())")
+            }
+            // setting the Kills
+            this_team.setKills(kills: this_team.getKills() + 1)
+            
+            print("\(this_team.getName()) Killed  \(this_team.getKills()) opponent Player")
+            //setting Score
+            if this_team.getKills() > 0 {
+                this_team.setScore(score: 100 * this_team.getKills())
+                
+            print("\(this_team.getName()) Score is \(this_team.getScore())")
                 
             }
             
             // Showing remaining members
-            print("\(otherTeam.getTeam_Name()) remaining members are \(otherTeam.getMember())")
+            print("\(otherTeam.getTeam_Name()) remaining members are \(otherTeam.player.count)")
         }
-        if self.getMember() < -1 {
+        print("outside if")
+        if self.player.count <= 0 {
+            print("team a break")
             break
-        }else if otherTeam.getMember() < -1 {
+        }else if otherTeam.player.count <= 0 {
+            print("team b break")
             break
         }else{
             continue
         }
     }//first While
-        if self.getMember() == 0 {
+    print("outside while")
+    if self.player.count == 0 {
             self.setLose(sLose: true)
             self.setWinner(sWinner: false)
+        print("returning a")
             return self
         }else{
             otherTeam.setLose(sLose: true)
             otherTeam.setWinner(sWinner: false)
+        print("returning b")
             return otherTeam
         }
     
