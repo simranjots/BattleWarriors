@@ -59,79 +59,50 @@ public class Main {
    public func teamNearby() -> Void {
         
         while teams.count > 1 {
-            print("in main while again")
-            for var l in 0..<teams.count{
-                print("inside first for")
-                var n = l + 1
-                for var m in n..<teams.count{
-                    
-                    print("inside second for")
-                    print(l)
-                    print(m)
-                    print(n)
-                    print(teams.count)
-//                    if(m >= teams.count)
-//                    {
-//                        m = teams.count - 1
-//                    }
-                    let x1 : Int = teams[l].getX_axis()
-                    let y1 : Int = teams[l].getY_axis()
-                    let x2 : Int = teams[m].getX_axis()
-                    let y2 : Int = teams[m].getY_axis()
-                    print("found axis")
-                    
-                    let xAxis = x2 - x1
-                    let yAxis = y2 - y1
-                    
-                    let sqrtvalue : Double = Double(((xAxis * xAxis) + (yAxis * yAxis)))
-                    let distance = sqrtvalue.squareRoot()
-                    
-                    if distance <=  Double(teams[l].getRadius() + teams[m].getRadius())
+            var l = 0
+            while l < teams.count{
+                 var m = 1
+                while m < teams.count{
+                    let x1 : Double = teams[l].getX_axis()
+                    let y1 : Double = teams[l].getY_axis()
+                    let x2 : Double = teams[m].getX_axis()
+                    let y2 : Double = teams[m].getY_axis()
+            
+        
+                    var distance = sqrt((x2 - x1) * (x2 -  x1) + (y2 - y1) * (y2 - y1))
+                    if distance <= (teams[l].getRadius() + teams[m].getRadius()) && l != m
                     {
+                        
                         print("\(teams[l].getTeam_Name()) is nearby to \(teams[m].getTeam_Name())")
                         var Loser = teams[l].battleTeam(otherTeam : teams[m])
-                        //let index = teams.index(of : Loser)
-                        //teams.remove(at: 2)
-                    
-                            print("inside remove")
-                            print(teams.count)
-                        for lt in 0..<teams.count
-                        {
-                            let t = teams[lt]
-                            print(t.getTeam_Name())
-                            print(Loser.getTeam_Name())
-                            if(t.getTeam_Name() == Loser.getTeam_Name())
+                        if Loser.getTeam_Name() == teams[l].getTeam_Name() {
+                            teams.remove(at: l)
+                            if(teams.count > 1)
                             {
-                                print("inside if")
-                                print(lt)
-                                print(teams.count)
-                                teams.remove(at: lt)
-                                print("removed")
-                                break
+                                teams[m].moveTeam()
+                            }
+                            
+                            
+                        }
+                        else
+                        {
+                            teams.remove(at: m)
+                            if(teams.count > 1)
+                            {
+                                teams[l].moveTeam()
                             }
                         }
-                        
-                       // var index = teams[Loser]
-                        
                     }
-                    
-                    
-                }
-                
-                
-            }
-            
-            for l in 0..<teams.count{
-                for m in l + 1..<teams.count{
-                    
-                    teams[l].moveTeam()
-                    teams[m].moveTeam()
-            
-                }
-            }
-
-
-            if teams.count < 0 {
+                    else
+                    {
+                        break
+                    }
+            m = l + 1
+       }
+       l += 1
+ }
+                 if teams.count <= 1 {
+                    print("winner is \(teams[0].getTeam_Name())")
                   break
             }
         }

@@ -80,7 +80,6 @@ public class  Assault : WeaponClass, WeaponProtocol{
         {
             self.reload();
         }
-        print("damvalue \(dam)")
         return dam;
     }
     
