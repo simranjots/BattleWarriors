@@ -68,39 +68,36 @@ public class Main {
                     let x2 : Double = teams[m].getX_axis()
                     let y2 : Double = teams[m].getY_axis()
             
-        
-                    var distance = sqrt((x2 - x1) * (x2 -  x1) + (y2 - y1) * (y2 - y1))
+                    let distance = sqrt((x2 - x1) * (x2 -  x1) + (y2 - y1) * (y2 - y1))
                     if distance <= (teams[l].getRadius() + teams[m].getRadius()) && l != m
                     {
                         
                         print("\(teams[l].getTeam_Name()) is nearby to \(teams[m].getTeam_Name())")
-                        var Loser = teams[l].battleTeam(otherTeam : teams[m])
+                        let Loser = teams[l].battleTeam(otherTeam : teams[m])
                         if Loser.getTeam_Name() == teams[l].getTeam_Name() {
                             teams.remove(at: l)
-                            if(teams.count > 1)
-                            {
-                                teams[m].moveTeam()
-                            }
-                            
-                            
+                        
                         }
                         else
                         {
                             teams.remove(at: m)
-                            if(teams.count > 1)
-                            {
-                                teams[l].moveTeam()
-                            }
+                            
                         }
                     }
                     else
                     {
                         break
                     }
+                   
             m = l + 1
        }
+               for j in 0..<teams.count{
+                        teams[j].moveTeam()
+                   }
+                                  
        l += 1
  }
+            
                  if teams.count <= 1 {
                     print("winner is \(teams[0].getTeam_Name())")
                   break
